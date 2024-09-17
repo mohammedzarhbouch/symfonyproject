@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class QuestionController
+class QuestionController extends AbstractController
 {
 
     /**
@@ -21,10 +22,17 @@ class QuestionController
      */
     public function show($slug)
     {
-        return new Response(sprintf(
-            "future page to show a question'%s'",
-            $slug
+        $answers = [
+            'antwoord 1',
+            'antwoord 2',
+            'antwoord 3',
 
-        ));
+        ];
+
+        return $this->render('question/show.html.twig', [
+            'question' => ucwords(str_replace('-', ' ', $slug)),
+            'answers' => $answers,
+        ]);
+
     }
 }
