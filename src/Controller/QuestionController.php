@@ -10,22 +10,22 @@ class QuestionController extends AbstractController
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="app_homepage")
      */
     public function homepage()
     {
-        return new Response("test");
+        return $this->render('question/homepage.html.twig');
     }
 
     /**
-     * @Route("/questions/{slug}")
+     * @Route("/questions/{slug}", name="app_question_show")
      */
     public function show($slug)
     {
         $answers = [
-            'antwoord 1',
-            'antwoord 2',
-            'antwoord 3',
+            'This is an answer',
+            'This is not an answer',
+            'This might be an answer',
 
         ];
 
